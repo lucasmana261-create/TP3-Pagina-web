@@ -1,0 +1,8 @@
+Esta carpeta necesita las siguientes imágenes (no incluidas):
+
+- impresora_blanca.png   -> imagen del producto usada en el hero
+- beneficios_fondo.jpg   -> foto de fondo de la sección "Beneficios"
+  (la foto de las personas sonriendo, como en tu captura de referencia)
+
+Copiá tus archivos originales de assets/ acá, agregando también
+beneficios_fondo.jpg, y listo.
