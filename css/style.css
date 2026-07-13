@@ -391,7 +391,8 @@ ul {
    alineada exactamente debajo del título, no debajo del número */
 .paso__text-wrap {
   flex: 1 1 260px;
-  padding-top: 0.22em;
+  padding-top: 0.42em;
+  margin-top: 8px;
 }
 
 .paso__title {
@@ -418,19 +419,48 @@ ul {
   .paso {
     flex-direction: column;
     text-align: center;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .paso__media {
+    max-width: 260px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .paso__heading {
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     text-align: center;
+    gap: 6px;
+  }
+
+  .paso__number {
+    font-size: clamp(44px, 12vw, 60px);
+  }
+
+  .paso__content {
+    margin-left: 0;
+    width: 100%;
   }
 
   .paso__text-wrap {
+    flex: 1 1 auto;
+    width: 100%;
     padding-top: 0;
   }
 
+  .paso__title {
+    font-size: clamp(16px, 4.5vw, 20px);
+    margin-bottom: 8px;
+  }
+
   .paso__text {
+    font-size: 13px;
     margin: 0 auto;
+    max-width: 300px;
   }
 }
 
@@ -485,7 +515,7 @@ ul {
   line-height: 1.08;
   color: var(--white);
   text-transform: uppercase;
-  margin-bottom: 18x;
+  margin-bottom:11px;
   text-align: center;
   max-width: 100%;
   white-space: nowrap;
@@ -494,7 +524,7 @@ ul {
 .recuerdos__subtitle {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: clamp(18px, 2.6vw, 32px);
+  font-size: clamp(10px, 2.6vw, 32px);
   color: var(--white);
 }
 
@@ -638,14 +668,60 @@ ul {
 }
 
 @media (max-width: 700px) {
+  .hotspot__line {
+    top: 100%;
+    left: 50%;
+    right: auto;
+    height: 0;
+    width: 2px;
+    transform: translateX(-50%);
+  }
+
+  .hotspot--right .hotspot__line,
+  .hotspot--left .hotspot__line {
+    top: 100%;
+    left: 50%;
+    right: auto;
+  }
+
+  .hotspot.is-open .hotspot__line {
+    width: 2px;
+    height: 14px;
+  }
+
   .hotspot__label {
-    width: 160px;
-    padding: 10px 16px;
+    width: 130px;
+    padding: 8px 12px;
+    left: 50%;
+    right: auto;
+    top: calc(100% + 14px);
+    transform: translateX(-50%) scale(0.85);
+  }
+
+  .hotspot--right .hotspot__label,
+  .hotspot--left .hotspot__label {
+    left: 50%;
+    right: auto;
+  }
+
+  .hotspot.is-open .hotspot__label {
+    transform: translateX(-50%) scale(1);
   }
 
   .hotspot__label-title {
     white-space: normal;
-    font-size: 12px;
+    font-size: 10.5px;
+  }
+
+  .hotspot__label-desc {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .hotspot.is-open .hotspot__label-desc {
+    max-height: 260px;
+    opacity: 1;
+    margin-top: 8px;
   }
 }
 
@@ -952,6 +1028,22 @@ ul {
   text-align: center;
 }
 
+@media (max-width: 700px) {
+  .accesorios__carousel {
+    gap: 10px;
+  }
+
+  .accesorio {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .accesorio__label {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+}
+
 /* =========================================
    Footer
 ========================================= */
@@ -1084,14 +1176,23 @@ ul {
 @media (max-width: 700px) {
   .footer__container {
     flex-direction: column;
+    gap: 20px;
   }
 
   .footer__brand {
     max-width: 100%;
   }
 
+  .footer__logo-image {
+    height: 22px;
+  }
+
   .footer__tagline {
     max-width: 100%;
+  }
+
+  .footer__social {
+    margin-bottom: 0;
   }
 }
 
@@ -1099,14 +1200,41 @@ ul {
    Responsive
 ========================================= */
 @media (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .hero__header {
     justify-content: center;
     text-align: center;
   }
 
+  .nav {
+    min-width: 0;
+    max-width: 100%;
+  }
+
   .nav__list {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 6px;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    padding: 0 12px;
+  }
+
+  .nav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav__link {
+    padding: 6px 9px;
+    font-size: 11px;
+    scroll-snap-align: center;
   }
 
   .hero__content {
@@ -1116,8 +1244,24 @@ ul {
     padding-bottom: 64px;
   }
 
+  .hero__title {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
+  .hero__text {
+    font-size: clamp(11px, 3vw, 14px);
+  }
+
   .btn {
     align-self: center;
+    font-size: 13px;
+    padding: 11px 22px;
+  }
+
+  .hero__bg-image {
+    object-position: center;
+    object-fit: contain;
+    transform: scale(2.3);
   }
 
   .hero__overlay {
@@ -1127,6 +1271,14 @@ ul {
       rgba(6, 15, 30, 0.88) 55%,
       rgba(6, 15, 30, 0.95) 100%
     );
+  }
+
+  .recuerdos__title {
+    font-size: clamp(13px, 4.4vw, 18px);
+  }
+
+  .recuerdos {
+    min-height: clamp(110px, 20vw, 170px);
   }
 
   .beneficios__title,
@@ -1157,7 +1309,7 @@ ul {
 
 @media (max-width: 480px) {
   .nav__link {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 5px 6px;
+    font-size: 9.5px;
   }
 }

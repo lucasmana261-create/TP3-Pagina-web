@@ -2,6 +2,29 @@
 // y desplaza suavemente la línea indicadora entre las opciones.
 
 document.addEventListener('DOMContentLoaded', () => {
+  // =========================================
+  // Hero — imagen específica para mobile
+  // En pantallas angostas se reemplaza la foto de escritorio por un
+  // recorte de la impresora pensado para el hero móvil.
+  // =========================================
+  const heroBgImage = document.getElementById('hero-bg-image');
+
+  if (heroBgImage) {
+    const desktopSrc = heroBgImage.getAttribute('src');
+    const mobileSrc = 'assets/movil_impresora.png';
+    const mobileQuery = window.matchMedia('(max-width: 900px)');
+
+    function updateHeroImage(matches) {
+      const targetSrc = matches ? mobileSrc : desktopSrc;
+      if (heroBgImage.getAttribute('src') !== targetSrc) {
+        heroBgImage.setAttribute('src', targetSrc);
+      }
+    }
+
+    updateHeroImage(mobileQuery.matches);
+    mobileQuery.addEventListener('change', (e) => updateHeroImage(e.matches));
+  }
+
   const navLinks = document.querySelectorAll('.nav__link');
   const navList = document.querySelector('.nav__list');
   const indicator = document.getElementById('nav-indicator');
@@ -111,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let index = 0;
 
     function getVisibleCount() {
-      if (window.innerWidth <= 640) return 1;
+      if (window.innerWidth <= 700) return 1;
       if (window.innerWidth <= 1000) return 2;
       return 3;
     }

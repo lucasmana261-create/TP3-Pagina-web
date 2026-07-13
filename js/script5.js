@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let index = 0;
 
     function getVisibleCount() {
-      if (window.innerWidth <= 640) return 1;
+      if (window.innerWidth <= 700) return 1;
       if (window.innerWidth <= 1000) return 2;
       return 3;
     }
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modelosCard = document.querySelector('.modelos__card');
   const modelosSwatches = document.querySelectorAll('.modelos__swatch');
   const modelosColorName = document.querySelector('.modelos__color-name');
-  const modelosPatternSpans = document.querySelectorAll('.modelos__pattern-row span');
+  const modelosPatternSpans = document.querySelectorAll('.modelos__pattern-track span');
 
   if (modelosCard && modelosSwatches.length) {
     modelosSwatches.forEach(swatch => {

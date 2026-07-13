@@ -392,7 +392,6 @@ ul {
 .paso__text-wrap {
   flex: 1 1 260px;
   padding-top: 0.22em;
-  margin-top: 8px;
 }
 
 .paso__title {
@@ -403,7 +402,7 @@ ul {
   line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  margin-bottom: 4px;
+  margin-bottom: 14px;
 }
 
 .paso__text {
@@ -412,7 +411,7 @@ ul {
   font-size: clamp(14px, 1.2vw, 15px);
   line-height: 1.45;
   color: #1a1a1a;
-  max-width: 450x;
+  max-width: 460px;
 }
 
 @media (max-width: 900px) {
@@ -486,7 +485,7 @@ ul {
   line-height: 1.08;
   color: var(--white);
   text-transform: uppercase;
-  margin-bottom: 20;
+  margin-bottom: 18x;
   text-align: center;
   max-width: 100%;
   white-space: nowrap;
