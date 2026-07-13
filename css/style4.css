@@ -246,7 +246,7 @@ ul {
   max-width: var(--max-width);
   margin: 0 auto;
   border-radius: 32px;
-  padding: clamp(56px, 7vw, 96px) clamp(24px, 5vw, 56px) calc(clamp(56px, 7vw, 96px) + 32px);
+  padding: clamp(36px, 4.4vw, 60px) clamp(24px, 5vw, 56px) clamp(64px, 8vw, 108px);
   background: linear-gradient(180deg, #090a29 0%, #001447 100%);
 }
 
@@ -258,7 +258,7 @@ ul {
   text-align: center;
   line-height: 1;
   margin-top: -0.14em;
-  margin-bottom: clamp(28px, 4vw, 44px);
+  margin-bottom: clamp(56px, 8vw, 96px);
 }
 
 .beneficios__list {
@@ -374,9 +374,8 @@ ul {
 
 .paso__heading {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 18px;
-  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
@@ -388,6 +387,13 @@ ul {
   line-height: 1;
 }
 
+/* Agrupa título + descripción para que la descripción quede
+   alineada exactamente debajo del título, no debajo del número */
+.paso__text-wrap {
+  flex: 1 1 260px;
+  padding-top: 0.22em;
+}
+
 .paso__title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -396,6 +402,7 @@ ul {
   line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+  margin-bottom: 14px;
 }
 
 .paso__text {
@@ -415,6 +422,11 @@ ul {
 
   .paso__heading {
     justify-content: center;
+    text-align: center;
+  }
+
+  .paso__text-wrap {
+    padding-top: 0;
   }
 
   .paso__text {
@@ -456,26 +468,33 @@ ul {
 .recuerdos__content {
   position: relative;
   z-index: 1;
+  width: 100%;
   max-width: 1100px;
+  margin: 0 auto;
   padding: 0 clamp(24px, 5vw, 64px);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recuerdos__title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: clamp(22px, 5.2vw, 76px);
+  font-size: clamp(16px, 3.6vw, 56px);
   line-height: 1.08;
   color: var(--white);
   text-transform: uppercase;
   margin-bottom: 20px;
+  text-align: center;
+  max-width: 100%;
   white-space: nowrap;
 }
 
 .recuerdos__subtitle {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: clamp(20px, 3vw, 32px);
+  font-size: clamp(13px, 1.5vw, 19px);
   color: var(--white);
 }
 
@@ -560,16 +579,17 @@ ul {
   top: 50%;
   transform: translateY(-50%) scale(0.85);
   opacity: 0;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: clamp(200px, 22vw, 260px);
   background: #001447;
   color: var(--white);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: clamp(12px, 1.3vw, 15px);
-  padding: 10px 18px;
-  border-radius: 999px;
+  padding: 12px 20px;
+  border-radius: 22px;
   pointer-events: none;
-  transition: opacity 0.3s ease 0.15s, transform 0.3s ease 0.15s;
+  transition: opacity 0.3s ease 0.15s, transform 0.3s ease 0.15s, border-radius 0.35s ease;
 }
 
 .hotspot--right .hotspot__label { left: calc(100% + clamp(36px, 6vw, 76px) + 10px); }
@@ -578,13 +598,240 @@ ul {
 .hotspot.is-open .hotspot__label {
   opacity: 1;
   transform: translateY(-50%) scale(1);
+  pointer-events: auto;
+}
+
+.hotspot__label-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 1.3vw, 15px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Descripción oculta por defecto; se despliega estirando el rectángulo
+   hacia abajo cuando se pasa el mouse sobre la etiqueta ya abierta */
+.hotspot__label-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: clamp(11px, 1.05vw, 13px);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-muted);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
+}
+
+.hotspot.is-open:hover .hotspot__label,
+.hotspot.is-open .hotspot__label:hover {
+  border-radius: 20px;
+}
+
+.hotspot.is-open:hover .hotspot__label-desc,
+.hotspot.is-open .hotspot__label:hover .hotspot__label-desc {
+  max-height: 220px;
+  opacity: 1;
+  margin-top: 10px;
 }
 
 @media (max-width: 700px) {
   .hotspot__label {
+    width: 160px;
+    padding: 10px 16px;
+  }
+
+  .hotspot__label-title {
     white-space: normal;
-    max-width: 140px;
     font-size: 12px;
+  }
+}
+
+/* =========================================
+   Sección Modelos (elegí tu estilo)
+========================================= */
+.modelos {
+  padding: clamp(48px, 6vw, 88px) clamp(24px, 5vw, 64px) clamp(88px, 10vw, 140px);
+  background-color: var(--white);
+}
+
+.modelos__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.modelos__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 3.6vw, 46px);
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.modelos__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 3vw, 32px);
+}
+
+.modelos__visual {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  width: 100%;
+  min-height: clamp(340px, 40vw, 480px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease;
+}
+
+/* Paletas por color de impresora */
+.modelos__card[data-color="rosa"] .modelos__visual {
+  background: linear-gradient(160deg, #ffd9e2 0%, #f9a8bf 100%);
+  --pattern-color: rgba(255, 255, 255, 0.4);
+}
+
+.modelos__card[data-color="blanco"] .modelos__visual {
+  background: linear-gradient(160deg, #ffffff 0%, #e7ebf1 100%);
+  --pattern-color: rgba(0, 0, 0, 0.05);
+}
+
+.modelos__card[data-color="negro"] .modelos__visual {
+  background: linear-gradient(160deg, #2e2e31 0%, #0d0d0f 100%);
+  --pattern-color: rgba(255, 255, 255, 0.09);
+}
+
+/* Texto de fondo con el nombre del color, rotado 90° a la izquierda
+   y desplazándose lentamente en bucle dentro del rectángulo */
+.modelos__pattern {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-evenly;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.modelos__pattern-col {
+  position: relative;
+  height: 100%;
+  width: clamp(60px, 8vw, 110px);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.modelos__pattern-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(30px, 4vw, 56px);
+  animation: modelosPatternScroll 16s linear infinite;
+}
+
+.modelos__pattern-col:nth-child(even) .modelos__pattern-track {
+  animation-direction: reverse;
+}
+
+.modelos__pattern-track span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(46px, 6vw, 88px);
+  line-height: 1;
+  color: var(--pattern-color);
+  white-space: nowrap;
+  transform: rotate(-90deg);
+  transition: color 0.4s ease;
+}
+
+@keyframes modelosPatternScroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+/* Imagen del producto (placeholder reemplazable por la foto real) */
+.modelos__product {
+  position: relative;
+  z-index: 1;
+  width: clamp(220px, 26vw, 320px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modelos__product-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.22));
+}
+
+/* Selector de color: circulitos + divisor + nombre, debajo de la tarjeta,
+   siempre visible (ya no queda recortado) */
+.modelos__selector {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 14px 26px;
+  box-shadow: 0 20px 40px rgba(1, 19, 69, 0.16);
+}
+
+.modelos__swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  padding: 0;
+  transform: scale(0.85);
+  opacity: 0.85;
+  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+}
+
+.modelos__swatch--blanco { background-color: #ffffff; border-color: #d8dee6; }
+.modelos__swatch--rosa { background-color: #f6a9bd; }
+.modelos__swatch--negro { background-color: #1a1a1a; }
+
+.modelos__swatch.is-active {
+  transform: scale(1.35);
+  opacity: 1;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.modelos__divider {
+  width: 1px;
+  height: 22px;
+  background: #d9dee6;
+  margin: 0 2px;
+}
+
+.modelos__color-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+  min-width: 52px;
+}
+
+@media (max-width: 700px) {
+  .modelos__selector {
+    padding: 12px 18px;
+    gap: 10px;
+  }
+
+  .modelos__product {
+    width: 200px;
   }
 }
 

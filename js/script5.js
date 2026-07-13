@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modelosCard = document.querySelector('.modelos__card');
   const modelosSwatches = document.querySelectorAll('.modelos__swatch');
   const modelosColorName = document.querySelector('.modelos__color-name');
-  const modelosPatternSpans = document.querySelectorAll('.modelos__pattern-track span');
+  const modelosPatternSpans = document.querySelectorAll('.modelos__pattern-row span');
 
   if (modelosCard && modelosSwatches.length) {
     modelosSwatches.forEach(swatch => {
