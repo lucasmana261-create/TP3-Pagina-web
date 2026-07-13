@@ -246,7 +246,7 @@ ul {
   max-width: var(--max-width);
   margin: 0 auto;
   border-radius: 32px;
-  padding: clamp(36px, 4.4vw, 60px) clamp(24px, 5vw, 56px) clamp(64px, 8vw, 108px);
+  padding: clamp(56px, 7vw, 96px) clamp(24px, 5vw, 56px) calc(clamp(56px, 7vw, 96px) + 32px);
   background: linear-gradient(180deg, #090a29 0%, #001447 100%);
 }
 
@@ -258,7 +258,7 @@ ul {
   text-align: center;
   line-height: 1;
   margin-top: -0.14em;
-  margin-bottom: clamp(56px, 8vw, 96px);
+  margin-bottom: clamp(28px, 4vw, 44px);
 }
 
 .beneficios__list {
@@ -374,8 +374,9 @@ ul {
 
 .paso__heading {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 18px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
@@ -387,13 +388,6 @@ ul {
   line-height: 1;
 }
 
-/* Agrupa título + descripción para que la descripción quede
-   alineada exactamente debajo del título, no debajo del número */
-.paso__text-wrap {
-  flex: 1 1 260px;
-  padding-top: 0.22em;
-}
-
 .paso__title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -402,7 +396,6 @@ ul {
   line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  margin-bottom: 14px;
 }
 
 .paso__text {
@@ -422,11 +415,6 @@ ul {
 
   .paso__heading {
     justify-content: center;
-    text-align: center;
-  }
-
-  .paso__text-wrap {
-    padding-top: 0;
   }
 
   .paso__text {
@@ -468,14 +456,9 @@ ul {
 .recuerdos__content {
   position: relative;
   z-index: 1;
-  width: 100%;
   max-width: 1100px;
-  margin: 0 auto;
   padding: 0 clamp(24px, 5vw, 64px);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .recuerdos__title {
@@ -486,8 +469,7 @@ ul {
   color: var(--white);
   text-transform: uppercase;
   margin-bottom: 20px;
-  text-align: center;
-  max-width: 100%;
+  white-space: nowrap;
 }
 
 .recuerdos__subtitle {
@@ -578,16 +560,16 @@ ul {
   top: 50%;
   transform: translateY(-50%) scale(0.85);
   opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: clamp(200px, 22vw, 260px);
+  white-space: nowrap;
   background: #001447;
   color: var(--white);
-  padding: 12px 20px;
-  border-radius: 22px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 1.3vw, 15px);
+  padding: 10px 18px;
+  border-radius: 999px;
   pointer-events: none;
-  transition: opacity 0.3s ease 0.15s, transform 0.3s ease 0.15s, border-radius 0.35s ease;
+  transition: opacity 0.3s ease 0.15s, transform 0.3s ease 0.15s;
 }
 
 .hotspot--right .hotspot__label { left: calc(100% + clamp(36px, 6vw, 76px) + 10px); }
@@ -596,227 +578,13 @@ ul {
 .hotspot.is-open .hotspot__label {
   opacity: 1;
   transform: translateY(-50%) scale(1);
-  pointer-events: auto;
-}
-
-.hotspot__label-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: clamp(12px, 1.3vw, 15px);
-  white-space: nowrap;
-}
-
-/* Descripción oculta por defecto; se despliega estirando el rectángulo
-   hacia abajo cuando se pasa el mouse sobre la etiqueta ya abierta */
-.hotspot__label-desc {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: clamp(11px, 1.05vw, 13px);
-  line-height: 1.5;
-  color: var(--text-muted);
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  margin-top: 0;
-  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
-}
-
-.hotspot.is-open:hover .hotspot__label,
-.hotspot.is-open .hotspot__label:hover {
-  border-radius: 20px;
-}
-
-.hotspot.is-open:hover .hotspot__label-desc,
-.hotspot.is-open .hotspot__label:hover .hotspot__label-desc {
-  max-height: 220px;
-  opacity: 1;
-  margin-top: 10px;
 }
 
 @media (max-width: 700px) {
   .hotspot__label {
-    width: 160px;
-    padding: 10px 16px;
-  }
-
-  .hotspot__label-title {
     white-space: normal;
+    max-width: 140px;
     font-size: 12px;
-  }
-}
-
-/* =========================================
-   Sección Modelos (elegí tu estilo)
-========================================= */
-.modelos {
-  padding: clamp(48px, 6vw, 88px) clamp(24px, 5vw, 64px) clamp(88px, 10vw, 140px);
-  background-color: var(--white);
-}
-
-.modelos__container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.modelos__title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: clamp(30px, 3.6vw, 46px);
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: clamp(40px, 6vw, 64px);
-}
-
-.modelos__card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 32px;
-  min-height: clamp(340px, 40vw, 480px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: clamp(48px, 6vw, 64px);
-  transition: background 0.4s ease;
-}
-
-/* Paletas por color de impresora */
-.modelos__card[data-color="rosa"] {
-  background: linear-gradient(160deg, #ffd9e2 0%, #f9a8bf 100%);
-  --pattern-color: rgba(255, 255, 255, 0.4);
-}
-
-.modelos__card[data-color="blanco"] {
-  background: linear-gradient(160deg, #ffffff 0%, #e7ebf1 100%);
-  --pattern-color: rgba(0, 0, 0, 0.05);
-}
-
-.modelos__card[data-color="negro"] {
-  background: linear-gradient(160deg, #2e2e31 0%, #0d0d0f 100%);
-  --pattern-color: rgba(255, 255, 255, 0.09);
-}
-
-/* Texto tileado de fondo con el nombre del color, como marca de agua */
-.modelos__pattern {
-  position: absolute;
-  inset: -20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: clamp(20px, 3vw, 40px);
-  transform: rotate(-14deg);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.modelos__pattern-row {
-  display: flex;
-  gap: clamp(28px, 4vw, 56px);
-  white-space: nowrap;
-}
-
-.modelos__pattern-row span {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: clamp(60px, 9vw, 140px);
-  line-height: 1;
-  color: var(--pattern-color);
-  transition: color 0.4s ease;
-}
-
-/* Placeholder central para que se reemplace por la foto real del producto */
-.modelos__placeholder {
-  position: relative;
-  z-index: 1;
-  width: clamp(220px, 26vw, 320px);
-  aspect-ratio: 4 / 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-align: center;
-  border: 2px dashed rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(2px);
-  padding: 20px;
-}
-
-.modelos__placeholder-icon {
-  font-size: 40px;
-  color: rgba(0, 0, 0, 0.45);
-}
-
-.modelos__placeholder-text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.55);
-  max-width: 220px;
-}
-
-/* Selector de color: circulitos + divisor + nombre, flotando sobre el borde inferior de la tarjeta */
-.modelos__selector {
-  position: absolute;
-  left: 50%;
-  bottom: -26px;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #ffffff;
-  border-radius: 999px;
-  padding: 14px 26px;
-  box-shadow: 0 20px 40px rgba(1, 19, 69, 0.16);
-}
-
-.modelos__swatch {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  padding: 0;
-  transform: scale(0.85);
-  opacity: 0.85;
-  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
-}
-
-.modelos__swatch--blanco { background-color: #ffffff; border-color: #d8dee6; }
-.modelos__swatch--rosa { background-color: #f6a9bd; }
-.modelos__swatch--negro { background-color: #1a1a1a; }
-
-.modelos__swatch.is-active {
-  transform: scale(1.35);
-  opacity: 1;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
-}
-
-.modelos__divider {
-  width: 1px;
-  height: 22px;
-  background: #d9dee6;
-  margin: 0 2px;
-}
-
-.modelos__color-name {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  color: #1a1a1a;
-  min-width: 52px;
-}
-
-@media (max-width: 700px) {
-  .modelos__selector {
-    padding: 12px 18px;
-    gap: 10px;
-  }
-
-  .modelos__placeholder {
-    width: 200px;
   }
 }
 

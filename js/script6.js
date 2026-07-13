@@ -145,34 +145,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateCarousel);
     updateCarousel();
   }
-
-  // =========================================
-  // Sección Modelos — selector de color
-  // Al elegir un color, ese circulito se agranda y los otros se achican,
-  // cambia el fondo de la tarjeta y el texto tileado de fondo.
-  // =========================================
-  const modelosCard = document.querySelector('.modelos__card');
-  const modelosSwatches = document.querySelectorAll('.modelos__swatch');
-  const modelosColorName = document.querySelector('.modelos__color-name');
-  const modelosPatternSpans = document.querySelectorAll('.modelos__pattern-row span');
-
-  if (modelosCard && modelosSwatches.length) {
-    modelosSwatches.forEach(swatch => {
-      swatch.addEventListener('click', () => {
-        const color = swatch.dataset.color;
-
-        modelosSwatches.forEach(s => {
-          const isActive = s === swatch;
-          s.classList.toggle('is-active', isActive);
-          s.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-        });
-
-        modelosCard.dataset.color = color;
-
-        const label = color.toUpperCase();
-        if (modelosColorName) modelosColorName.textContent = label;
-        modelosPatternSpans.forEach(span => { span.textContent = label; });
-      });
-    });
-  }
 });
